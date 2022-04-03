@@ -50,17 +50,20 @@ public class SpawnerTool : BaseTool
 		{
 			return;
 		}
+		var spawnTr = Trace.Ray( Owner.EyePosition, Owner.EyePosition + Owner.EyeRotation.Forward * MaxTraceDistance )
+			.Ignore( Owner )
+			.Run();
 
 		var model = Owner.Client.GetClientData<string>( "spawner_model", "" );
 		if ( !string.IsNullOrWhiteSpace( model ) )
 		{
-			_ = SandboxGame.SpawnModel( Owner.Client, model );
+			_ = SandboxGame.SpawnModel( Owner.Client, model, spawnTr.EndPosition );
 		}
 
 		var entityClass = Owner.Client.GetClientData<string>( "spawner_entity", "" );
 		if ( !string.IsNullOrWhiteSpace( entityClass ) )
 		{
-			SandboxGame.SpawnEntity( Owner.Client, entityClass );
+			SandboxGame.SpawnEntity( Owner.Client, entityClass, spawnTr.EndPosition );
 		}
 	}
 
