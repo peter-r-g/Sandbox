@@ -31,10 +31,12 @@ public class SpawnerTool : BaseTool
 				case Prop prop when !string.IsNullOrEmpty( prop.GetModelName() ):
 					Model = prop.GetModelName();
 					EntityClass = "";
+					CreateHitEffects( tr.EndPosition );
 					break;
 				case ModelEntity entity when !string.IsNullOrEmpty( entity.GetModelName() ):
 					Model = "";
 					EntityClass = entity.ClassInfo.Name;
+					CreateHitEffects( tr.EndPosition );
 					break;
 			}
 
@@ -58,12 +60,14 @@ public class SpawnerTool : BaseTool
 		if ( !string.IsNullOrWhiteSpace( model ) )
 		{
 			_ = SandboxGame.SpawnModel( Owner.Client, model, spawnTr.EndPosition );
+			CreateHitEffects( spawnTr.EndPosition );
 		}
 
 		var entityClass = Owner.Client.GetClientData<string>( "spawner_entity", "" );
 		if ( !string.IsNullOrWhiteSpace( entityClass ) )
 		{
 			SandboxGame.SpawnEntity( Owner.Client, entityClass, spawnTr.EndPosition );
+			CreateHitEffects( spawnTr.EndPosition );
 		}
 	}
 
