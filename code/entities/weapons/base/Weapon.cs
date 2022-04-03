@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Sandbox;
+﻿using Sandbox;
 using Sandbox.ScreenShake;
 using SandboxGame.Entities;
 using SandboxGame.Entities.AI;
