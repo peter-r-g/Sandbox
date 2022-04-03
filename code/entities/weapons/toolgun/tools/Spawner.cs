@@ -43,15 +43,11 @@ public class SpawnerTool : BaseTool
 			return;
 		}
 
-		if ( !Host.IsServer )
+		if ( !Host.IsServer || !Input.Pressed( InputButton.Attack1 ) )
 		{
 			return;
 		}
 
-		if ( !Input.Pressed( InputButton.Attack1 ) )
-		{
-			return;
-		}
 		var spawnTr = Trace.Ray( Owner.EyePosition, Owner.EyePosition + Owner.EyeRotation.Forward * MaxTraceDistance )
 			.Ignore( Owner )
 			.Run();
