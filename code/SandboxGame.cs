@@ -114,15 +114,10 @@ public partial class SandboxGame : Game
 		return model;
 	}
 
-	public static async Task SpawnModel( Client cl, string model )
+	public static async Task SpawnModel( Client cl, string model, Vector3 pos )
 	{
 		var owner = cl.Pawn;
 		var ownerTool = (ToolGun)owner.Children.FirstOrDefault( x => x is ToolGun );
-
-		var tr = Trace.Ray( owner.EyePosition, owner.EyePosition + owner.EyeRotation.Forward * 500 )
-			.UseHitboxes()
-			.Ignore( owner )
-			.Run();
 
 		var rotation = Rotation.From( new Angles( 0, owner.EyeRotation.Angles().yaw, 0 ) ) *
 		               Rotation.FromAxis( Vector3.Up, 180 );
@@ -135,7 +130,7 @@ public partial class SandboxGame : Game
 		     !model.EndsWith( ".vmdl_c", StringComparison.OrdinalIgnoreCase ) )
 		{
 			Notifications.Send( To.Single( cl ), "sworksSpawn", "Spawning S&Works items may take some time" );
-			model = await SpawnPackageModel( model, tr.EndPosition, rotation, owner );
+			model = await SpawnPackageModel( model, pos, rotation, owner );
 			if ( model == null )
 			{
 				return;
@@ -144,7 +139,7 @@ public partial class SandboxGame : Game
 
 		var ent = new Prop {Rotation = rotation};
 		ent.SetModel( model );
-		ent.Position = tr.EndPosition - Vector3.Up * ent.CollisionBounds.Mins.z;
+		ent.Position = pos - Vector3.Up * ent.CollisionBounds.Mins.z;
 		ent.Tags.Add( "prop", "spawned" );
 
 		if ( model == "models/citizen/citizen.vmdl" && ownerTool?.CurrentTool is Dresser dresser )
@@ -155,7 +150,7 @@ public partial class SandboxGame : Game
 		UndoHandler.Register( owner, ent );
 	}
 
-	public static void SpawnEntity( Client cl, string entityClass )
+	public static void SpawnEntity( Client cl, string entityClass, Vector3 pos )
 	{
 		var owner = cl.Pawn;
 		var attribute = Library.GetAttribute( entityClass );
@@ -163,12 +158,6 @@ public partial class SandboxGame : Game
 		{
 			return;
 		}
-
-		var tr = Trace.Ray( owner.EyePosition, owner.EyePosition + owner.EyeRotation.Forward * 200 )
-			.UseHitboxes()
-			.Ignore( owner )
-			.Size( 2 )
-			.Run();
 
 		var ent = Library.Create<Entity>( entityClass );
 		if ( owner is Player player && ent is BaseCarriable && player.Inventory != null )
@@ -179,7 +168,7 @@ public partial class SandboxGame : Game
 			}
 		}
 
-		ent.Position = tr.EndPosition;
+		ent.Position = pos;
 		ent.Rotation = Rotation.From( new Angles( 0, owner.EyeRotation.Angles().yaw, 0 ) );
 		ent.Tags.Add( "entity", "spawned" );
 		UndoHandler.Register( owner, ent );
@@ -194,7 +183,13 @@ public partial class SandboxGame : Game
 			return;
 		}
 
-		await SpawnModel( ConsoleSystem.Caller, model );
+		var owner = ConsoleSystem.Caller.Pawn;
+		var tr = Trace.Ray( owner.EyePosition, owner.EyePosition + owner.EyeRotation.Forward * 500 )
+			.UseHitboxes()
+			.Ignore( owner )
+			.Run();
+
+		await SpawnModel( ConsoleSystem.Caller, model, tr.EndPosition );
 	}
 
 	[ServerCmd]
@@ -205,7 +200,13 @@ public partial class SandboxGame : Game
 			Log.Warning( Language.GetPhrase( "console_cant_use" ) );
 			return;
 		}
+		
+		var owner = ConsoleSystem.Caller.Pawn;
+		var tr = Trace.Ray( owner.EyePosition, owner.EyePosition + owner.EyeRotation.Forward * 500 )
+			.UseHitboxes()
+			.Ignore( owner )
+			.Run();
 
-		SpawnEntity( ConsoleSystem.Caller, entityClass );
+		SpawnEntity( ConsoleSystem.Caller, entityClass, tr.EndPosition );
 	}
 }
