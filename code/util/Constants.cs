@@ -3,6 +3,7 @@
 public static class Constants
 {
 	public const string BackupLanguage = "english";
+	public const string ProfileDataFileName = "profile_data.json";
 
 	public static class Command
 	{

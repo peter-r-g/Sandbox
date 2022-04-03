@@ -79,7 +79,7 @@ public static class Profile
 			return;
 		}
 		
-		FileSystem.Data.WriteJson( "cl_profile_data.json", ProfiledData );
+		FileSystem.Data.WriteJson( $"cl_{Constants.ProfileDataFileName}", ProfiledData );
 		ProfiledData.Profiles.Clear();
 		Log.Info( "Saved data to cl_profile_data.json" );
 	}
@@ -93,7 +93,7 @@ public static class Profile
 			return;
 		}
 		
-		FileSystem.Data.WriteJson( "sv_profile_data.json", ProfiledData );
+		FileSystem.Data.WriteJson( $"sv_{Constants.ProfileDataFileName}", ProfiledData );
 		ProfiledData.Profiles.Clear();
 		Log.Info( "Saved data to sv_profile_data.json" );
 	}
