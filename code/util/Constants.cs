@@ -10,6 +10,13 @@ public static class Constants
 		public const string CarAcceleration = "car_acceleration";
 		public const string CarDebug = "car_debug";
 		public const string CurrentTool = "tool_current";
+		public const string DebugTimerStats = "debug_timerstats";
+		public const string DebugSetActiveCl = "debug_setactive_cl";
+		public const string DebugSetActiveSv = "debug_setactive_sv";
+		public const string DebugSaveProfileCl = "debug_saveprofile_cl";
+		public const string DebugSaveProfileSv = "debug_saveprofile_sv";
+		public const string DebugDumpProfileCl = "debug_dumpprofile_cl";
+		public const string DebugDumpProfileSv = "debug_dumpprofile_sv";
 	}
 
 	public static class Entity

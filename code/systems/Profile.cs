@@ -46,7 +46,7 @@ public static class Profile
 		_root = new Entry();
 	}
 
-	[ServerCmd( "debug_timerstats" )]
+	[ServerCmd( Constants.Command.DebugTimerStats )]
 	public static void DisplayTimerProperties()
 	{
 		// Display the timer frequency and resolution.
@@ -56,21 +56,21 @@ public static class Profile
 		Log.Info( $"Timer is accurate within {(1000L * 1000L * 1000L) / Stopwatch.Frequency} nanoseconds" );
 	}
 
-	[ClientCmd( "deubg_setactive_cl" )]
+	[ClientCmd( Constants.Command.DebugSetActiveCl )]
 	public static void SetActiveCl( bool active )
 	{
 		_profileActive = active;
 		Log.Info( active ? "Profiling is now active" : "Profiling is now inactive" );
 	}
 	
-	[ServerCmd( "deubg_setactive_sv" )]
+	[ServerCmd( Constants.Command.DebugSetActiveSv )]
 	public static void SetActiveSv( bool active )
 	{
 		_profileActive = active;
 		Log.Info( active ? "Profiling is now active" : "Profiling is now inactive" );
 	}
 	
-	[ClientCmd( "debug_saveprofile_cl" )]
+	[ClientCmd( Constants.Command.DebugSaveProfileCl )]
 	public static void SaveProfileCl()
 	{
 		if ( ProfiledData.Profiles.Count == 0 )
@@ -84,7 +84,7 @@ public static class Profile
 		Log.Info( "Saved data to cl_profile_data.json" );
 	}
 
-	[ServerCmd( "debug_saveprofile_sv" )]
+	[ServerCmd( Constants.Command.DebugSaveProfileSv )]
 	public static void SaveProfileSv()
 	{
 		if ( ProfiledData.Profiles.Count == 0 )
@@ -98,14 +98,14 @@ public static class Profile
 		Log.Info( "Saved data to sv_profile_data.json" );
 	}
 
-	[ClientCmd( "debug_dumpprofile_cl" )]
+	[ClientCmd( Constants.Command.DebugDumpProfileCl )]
 	public static void DumpProfileCl()
 	{
 		ProfiledData.Profiles.Clear();
 		Log.Info( "Profile data cleared" );
 	}
 	
-	[ServerCmd( "debug_dumpprofile_sv" )]
+	[ServerCmd( Constants.Command.DebugDumpProfileSv )]
 	public static void DumpProfileSv()
 	{
 		ProfiledData.Profiles.Clear();
