@@ -145,7 +145,7 @@ public partial class Weapon : BaseCarriable, IUse
 	
 	public virtual bool CanReload( bool checkInput )
 	{
-		if ( !Owner.IsValid() || checkInput && !Input.Down( InputButton.Reload ) ) return false;
+		if ( !Owner.IsValid() || ClipSize > 0 && !AutoReload && checkInput && !Input.Down( InputButton.Reload ) ) return false;
 
 		return !IsReloading && ClipSize < MaxClipSize;
 	}
