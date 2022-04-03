@@ -10,15 +10,13 @@ namespace SandboxGame.Tools;
 [Library( Constants.Tool.Light, Group = "construction" )]
 public class LightTool : BaseTool
 {
-	public Color Color = Color.White;
+	private Color Color = Color.White;
+	private float Range = 128;
+	private float RopeLength = 100;
+	
 	private PreviewEntity previewModel;
-	public float Range = 128;
-	public float RopeLength = 100;
-
-
-	private string Model => "models/light/light_tubular.vmdl";
-
-
+	private const string Model = "models/light/light_tubular.vmdl";
+	
 	protected override bool IsPreviewTraceValid( TraceResult tr )
 	{
 		if ( !base.IsPreviewTraceValid( tr ) )
@@ -87,7 +85,6 @@ public class LightTool : BaseTool
 				QuadraticAttenuation = 1.0f,
 				Brightness = 1,
 				Color = Color
-				//LightCookie = Texture.Load( "materials/effects/lightcookie.vtex" )
 			};
 
 			light.UseFogNoShadows();
@@ -125,7 +122,7 @@ public class LightTool : BaseTool
 
 			spring.OnBreak += () =>
 			{
-				rope?.Destroy( true );
+				rope.Destroy( true );
 				spring.Remove();
 			};
 		}
@@ -151,7 +148,7 @@ public class LightTool : BaseTool
 		SettingsPanel sPanel = new();
 		sPanel.AddChild( new Title( "Light Color" ) );
 
-		var cPicker = sPanel.Add.ColorPicker( clr =>
+		_ = sPanel.Add.ColorPicker( clr =>
 		{
 			Color = clr;
 
@@ -175,8 +172,7 @@ public class LightTool : BaseTool
 			RopeLength = ropeSlider;
 			UpdateSettings();
 		};
-
-
+		
 		return sPanel;
 	}
 }
