@@ -77,42 +77,42 @@ public static class Profile
 	[ClientCmd( Constants.Command.DebugSaveProfileCl )]
 	public static void SaveProfileCl()
 	{
-		if ( ProfiledData.Profiles.Count == 0 )
+		if ( ProfiledData.DataEmpty )
 		{
 			Log.Warning( Language.TryGetPhrase( "profiling_nodata" ) );
 			return;
 		}
 		
 		FileSystem.Data.WriteJson( $"cl_{Constants.ProfileDataFileName}", ProfiledData );
-		ProfiledData.Profiles.Clear();
+		ProfiledData.ClearData();
 		Log.Info( Language.TryGetPhrase( "profiling_saved", $"cl_{Constants.ProfileDataFileName}" ) );
 	}
 
 	[AdminCmd( Constants.Command.DebugSaveProfileSv )]
 	public static void SaveProfileSv()
 	{
-		if ( ProfiledData.Profiles.Count == 0 )
+		if ( ProfiledData.DataEmpty )
 		{
 			Log.Warning( Language.TryGetPhrase( "profiling_nodata" ) );
 			return;
 		}
 		
 		FileSystem.Data.WriteJson( $"sv_{Constants.ProfileDataFileName}", ProfiledData );
-		ProfiledData.Profiles.Clear();
+		ProfiledData.ClearData();
 		Log.Info( Language.TryGetPhrase( "profiling_saved", $"sv_{Constants.ProfileDataFileName}" ) );
 	}
 
 	[ClientCmd( Constants.Command.DebugDumpProfileCl )]
 	public static void DumpProfileCl()
 	{
-		ProfiledData.Profiles.Clear();
+		ProfiledData.ClearData();
 		Log.Info( Language.TryGetPhrase( "profiling_cleared" ) );
 	}
 	
 	[AdminCmd( Constants.Command.DebugDumpProfileSv )]
 	public static void DumpProfileSv()
 	{
-		ProfiledData.Profiles.Clear();
+		ProfiledData.ClearData();
 		Log.Info( Language.TryGetPhrase( "profiling_cleared" ) );
 	}
 	
@@ -140,7 +140,7 @@ public static class Profile
 			var startNano = StartTicks * NanosecondsPerTick;
 			var endNano = endTicks * NanosecondsPerTick;
 			
-			ProfiledData.Profiles.Add( new ProfileEntry( Name, Host.IsServer ? "Server" : "Client",
+			ProfiledData.AddData( new ProfileEntry( Name, Host.IsServer ? "Server" : "Client",
 				startNano / 1000, endNano / 1000 ) );
 
 			Me.Add( (endNano - startNano) / (double)1000000 );
@@ -209,6 +209,12 @@ public static class Profile
 	{
 		[JsonPropertyName( "traceEvents" )] public List<ProfileEntry> Profiles { get; } = new();
 		[JsonPropertyName( "displayTimeUnit" )] public string TimeUnit => "ns";
+
+		public bool DataEmpty => Profiles.Count == 0;
+
+		public void AddData( ProfileEntry entry ) => Profiles.Add( entry );
+
+		public void ClearData() => Profiles.Clear();
 	}
 
 	private readonly struct ProfileEntry
