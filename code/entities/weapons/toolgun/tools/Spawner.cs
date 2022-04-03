@@ -4,14 +4,14 @@ using SandboxGame.UI;
 
 namespace SandboxGame.Tools;
 
-[Library( Constants.Tool.Spawner, Group = "construction" )]
+[Library( Constants.Tool.Spawner, Group = Constants.LibraryGroup.Construction )]
 public class SpawnerTool : BaseTool
 {
-	[ConVar.ClientDataAttribute( "spawner_model" )]
-	public static string Model { get; set; }
+	[ConVar.ClientDataAttribute( Constants.Command.SpawnerModel )]
+	private static string Model { get; set; }
 
-	[ConVar.ClientDataAttribute( "spawner_entity" )]
-	public static string EntityClass { get; set; }
+	[ConVar.ClientDataAttribute( Constants.Command.SpawnerEntity )]
+	private static string EntityClass { get; set; }
 
 	public override void Simulate()
 	{
@@ -52,14 +52,14 @@ public class SpawnerTool : BaseTool
 			.Ignore( Owner )
 			.Run();
 
-		var model = Owner.Client.GetClientData<string>( "spawner_model", "" );
+		var model = Owner.Client.GetClientData<string>( Constants.Command.SpawnerModel, "" );
 		if ( !string.IsNullOrWhiteSpace( model ) )
 		{
 			_ = SandboxGame.SpawnModel( Owner.Client, model, spawnTr.EndPosition );
 			CreateHitEffects( spawnTr.EndPosition );
 		}
 
-		var entityClass = Owner.Client.GetClientData<string>( "spawner_entity", "" );
+		var entityClass = Owner.Client.GetClientData<string>( Constants.Command.SpawnerEntity, "" );
 		if ( !string.IsNullOrWhiteSpace( entityClass ) )
 		{
 			SandboxGame.SpawnEntity( Owner.Client, entityClass, spawnTr.EndPosition );

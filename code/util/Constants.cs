@@ -5,6 +5,11 @@ public static class Constants
 	public const string BackupLanguage = "english";
 	public const string ProfileDataFileName = "profile_data.json";
 
+	public static class LibraryGroup
+	{
+		public const string Construction = "construction";
+	}
+
 	public static class Command
 	{
 		public const string EmptyBot = "bot_empty";
@@ -18,6 +23,8 @@ public static class Constants
 		public const string DebugSaveProfileSv = "debug_saveprofile_sv";
 		public const string DebugDumpProfileCl = "debug_dumpprofile_cl";
 		public const string DebugDumpProfileSv = "debug_dumpprofile_sv";
+		public const string SpawnerEntity = "spawner_entity";
+		public const string SpawnerModel = "spawner_model";
 	}
 
 	public static class Entity
