@@ -1,0 +1,14 @@
+﻿<link href="SandworksTab.scss" rel="stylesheet">
+
+<div>
+    <div class="controls">
+        <filtertextentry @ref="FilterTextEntry" class="button textentry"
+                         placeholder="#control_filter"></filtertextentry>
+        <button @ref="NewestButton" onclick="ButtonClick( 'Newest' )">#order_newest</button>
+        <button @ref="PopularButton" onclick="ButtonClick( 'Popular' )">#order_popular</button>
+        <button @ref="TrendingButton" onclick="ButtonClick( 'Trending' )">#order_trending</button>
+        <button @ref="UpdatedButton" onclick="ButtonClick( 'Updated' )">#order_updated</button>
+        <button @ref="RefreshButton" onclick="Populate()">#refresh</button>
+    </div>
+    <virtualscrollpanel @ref="ItemsContainer" class="canvas"></virtualscrollpanel>
+</div>

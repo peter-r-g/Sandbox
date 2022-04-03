@@ -1,0 +1,45 @@
+﻿TabSplit {
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+
+
+    & .categoryList {
+        margin-bottom: 15px;
+        height: 50px;
+
+        & .button {
+            justify-content: center;
+            align-items: center;
+
+            padding: 0px 10px;
+            margin-right: 5px;
+            height: 100%;
+
+            border-bottom: 5px solid rgba(#03a9f3, 0);
+            font-family: Poppins;
+            font-size: 20px;
+            color: #737373;
+
+            &:not(.current) {
+                transition: all 0.25s ease;
+                cursor: pointer;
+
+                &:hover {
+                    border-bottom: 5px solid rgba(#03a9f3, .5);
+                    color: #0089c4;
+                }
+            }
+
+            &.current {
+                border-bottom: 5px solid #03a9f3;
+                color: #03a9f3;
+            }
+        }
+    }
+
+    & .categoryContent {
+        height: 100%;
+    }
+
+}

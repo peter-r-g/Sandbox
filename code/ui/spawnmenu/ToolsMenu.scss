@@ -1,0 +1,9 @@
+﻿// Properly adapts category list size;
+
+tabsplit {
+    & categorysplit {
+        & .categoryList {
+            width: 50%;
+        }
+    }
+}

@@ -1,0 +1,13 @@
+{
+  "Title": "Sandbox",
+  "Type": "game",
+  "Org": "gunman435",
+  "Ident": "sandbox",
+  "Schema": 1,
+  "HasAssets": true,
+  "AssetsPath": "",
+  "ResourcePaths": null,
+  "HasCode": true,
+  "CodePath": "code",
+  "RootNamespace": "SandboxGame"
+}

@@ -1,0 +1,19 @@
+﻿dressermenu {
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+
+    & .renderContainer {
+        border: 1px solid #90a4ad;
+        border-radius: 5px;
+        margin-bottom: 5px;
+        height: 350px;
+        width: 100%;
+
+        & .renderview {
+            cursor: pointer;
+            height: 100%;
+            width: 100%;
+        }
+    }
+}

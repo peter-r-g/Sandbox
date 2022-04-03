@@ -1,0 +1,47 @@
+﻿spawnicon {
+    padding: 5px;
+    height: 100%;
+    width: 100%;
+
+    & .inner {
+        background-color: rgba(grey, .05);
+        cursor: pointer;
+        height: 100%;
+        width: 100%;
+
+        &:hover {
+            background-color: rgba(grey, .08);
+        }
+
+        & .iconPanel {
+            background: url(/ui/unknown.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            position: absolute;
+            left: 12.5%;
+            top: 7.5%;
+
+            height: 75%;
+            width: 75%;
+
+            &.noicon {
+                background: none;
+            }
+
+            & .renderedCam {
+                height: 100%;
+                width: 100%;
+            }
+        }
+
+        & .iconText {
+            position: absolute;
+            color: #aaa;
+
+            transform: translate(-50%, -50%);
+            left: 50%;
+            top: 90%;
+        }
+    }
+}

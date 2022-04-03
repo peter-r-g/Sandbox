@@ -1,0 +1,22 @@
+﻿modelselector {
+    border: 1px solid #90a4ad;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    height: 240px;
+    width: 100%;
+
+    & .canvas {
+        justify-content: space-between;
+        overflow: scroll;
+        height: 100%;
+        width: 100%;
+
+        flex-wrap: wrap;
+        flex-grow: 1;
+
+        & spawnicon.active .inner {
+            border: 1px solid #90a4ad;
+            border-radius: 5px;
+        }
+    }
+}

@@ -1,0 +1,45 @@
+﻿spawnmenu {
+    backdrop-filter: blur(8px) saturate(0.2) brightness(0.3);
+    background-color: rgba(0, 0, 0, .8);
+    z-index: 500;
+
+    pointer-events: all;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 5%;
+
+    &.hidden {
+        pointer-events: none;
+        display: none;
+    }
+
+    & .contentPane {
+        &.left {
+            height: 100%;
+            width: 100%;
+
+            & .canvas {
+                justify-content: space-between;
+                overflow: scroll;
+                width: 100%;
+
+                flex-wrap: wrap;
+                flex-grow: 1;
+            }
+        }
+
+        &.right {
+            margin-left: 2%;
+            height: 100%;
+            width: 50%;
+
+            &.small {
+                width: 25%;
+            }
+        }
+    }
+}

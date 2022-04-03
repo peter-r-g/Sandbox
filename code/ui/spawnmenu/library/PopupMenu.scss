@@ -1,0 +1,31 @@
+﻿popupmenu {
+    pointer-events: all;
+    position: absolute;
+    z-index: 2000;
+    height: 100%;
+    width: 100%;
+
+    & .inner {
+        border: 2px solid rgba(#03a9f3, .5);
+        flex-direction: column;
+        position: absolute;
+        min-width: 150px;
+
+        & .button {
+            border-bottom: 1px solid rgba(#03a9f3, .5);
+            background-color: #2b2b2b;
+            align-items: center;
+            padding: 0px 5px;
+            color: white;
+
+            font-family: Poppins;
+            font-weight: 200;
+            font-size: 18px;
+            height: 35px;
+
+            &:hover {
+                background-color: #444547;
+            }
+        }
+    }
+}

@@ -1,0 +1,55 @@
+﻿CategorySplit {
+    height: 100%;
+    width: 100%;
+
+    & .categoryList {
+        margin-right: 10px;
+        height: 100%;
+        width: 20%;
+
+        border-right: 5px solid #03a9f3;
+        flex-direction: column;
+
+        & .button {
+            padding-left: 5px;
+            height: 30px;
+            width: 100%;
+
+            background-color: rgba(#03a9f3, 0);
+            font-family: Poppins;
+            font-size: 18px;
+            color: #737373;
+
+            &:not(.current) {
+                transition: all 0.25s ease;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: rgba(#03a9f3, .5);
+                    color: white;
+                }
+            }
+
+            &.current {
+                background-color: #03a9f3;
+                color: white;
+            }
+        }
+    }
+
+    & .categoryContent {
+        height: 100%;
+        width: 100%;
+    }
+
+    // Resize if content panel empty (tools)
+    &.bodyHidden {
+        & .categoryList {
+            width: 100%;
+        }
+
+        & .categoryContent {
+            display: none;
+        }
+    }
+}

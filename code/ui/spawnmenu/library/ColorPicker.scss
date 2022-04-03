@@ -1,0 +1,124 @@
+﻿colorpicker {
+    flex-direction: column;
+    margin-bottom: 10px;
+    width: 100%;
+
+    & .viewToggler {
+        border: 1px solid #90a4ad;
+        border-radius: 5px;
+        cursor: pointer;
+        height: 35px;
+
+
+        & .colorPreview {
+            background-color: purple;
+            position: absolute;
+            height: 75%;
+            width: 85%;
+
+            border-radius: 5px 0px 0px 5px;
+            transform: translateY(-50%);
+            left: 5px;
+            top: 50%;
+        }
+
+        & .tabyIcon {
+            border-left: 1px solid #90a4ad;
+            position: absolute;
+            height: 80%;
+            width: 10%;
+
+            transform: translateY(-50%);
+            right: 0px;
+            top: 50%;
+
+            align-items: center;
+            text-align: center;
+            color: #90a4ad;
+        }
+    }
+
+    & .bodyDropdown {
+        border-radius: 0px 0px 5px 5px;
+        border: 1px solid #90a4ad;
+        border-top: none;
+        display: none;
+
+        padding: 0px 5px 5px 5px;
+        height: 250px;
+        width: 100%;
+
+
+        & .bodyInner {
+            border-top: 1px solid #90a4ad;
+            padding-top: 5px;
+            height: 100%;
+            width: 100%;
+
+            flex-direction: row;
+
+            & .pickerPanel {
+                background-color: red;
+                cursor: pointer;
+                aspect-ratio: 1;
+                height: 100%;
+
+
+                & .pickerCursor {
+                    transition: width .1s ease, height .1s ease;
+                    border: 2px solid #90a4ad;
+                    border-radius: 50%;
+
+                    transform: translate(-50% -50%);
+                    position: absolute;
+                    height: 8px;
+                    width: 8px;
+
+                    &.active {
+                        height: 20px;
+                        width: 20px;
+                    }
+                }
+
+                & .colorOverlay {
+                    background: linear-gradient(to right, white, transparent);
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                }
+
+                & .colorOverlay:nth-child(2) {
+                    background: linear-gradient(to bottom, black, white);
+                    mix-blend-mode: multiply;
+                }
+            }
+
+            & .sliderGroup {
+                margin-left: 5px;
+                flex-grow: 1;
+
+                justify-content: space-around;
+                flex-direction: row;
+
+                height: 100%;
+
+                & .hue {
+                    background: linear-gradient(to top, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
+                }
+            }
+        }
+    }
+
+    // When the selector is open
+
+    &.open {
+        & .viewToggler {
+            border-radius: 5px 5px 0 0;
+            border-bottom: none;
+        }
+
+        & .bodyDropdown {
+            display: flex;
+        }
+    }
+}

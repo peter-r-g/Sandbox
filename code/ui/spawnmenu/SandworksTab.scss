@@ -1,0 +1,55 @@
+﻿sandworkstab {
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+
+    & .controls {
+        width: 100%;
+        height: 5%;
+
+        & .textentry {
+            width: 150px;
+
+            background-color: #2a2a2a;
+        }
+
+        & .button {
+            justify-content: center;
+            align-items: center;
+
+            padding: 0px 10px;
+            margin-right: 5px;
+            height: 100%;
+
+            border-bottom: 5px solid rgba(#03a9f3, 0);
+            font-family: Poppins;
+            font-size: 16px;
+            color: #737373;
+
+            &:not(.current) {
+                transition: all 0.25s ease;
+                cursor: pointer;
+
+                &:hover {
+                    border-bottom: 5px solid rgba(#03a9f3, .5);
+                    color: #0089c4;
+                }
+            }
+
+            &.current {
+                border-bottom: 5px solid #03a9f3;
+                color: #03a9f3;
+            }
+        }
+    }
+
+    & .canvas {
+        justify-content: space-between;
+        overflow: scroll;
+        width: 100%;
+        height: 95%;
+
+        flex-wrap: wrap;
+        flex-grow: 1;
+    }
+}

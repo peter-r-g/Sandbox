@@ -1,0 +1,51 @@
+{
+    "all_undone": "Toutes les entités annulées",
+    "camera1": "Interface utilisateur masquée à des fins de capture d'écran",
+    "camera2": "Les menus et le changement d'outil fonctionneront toujours",
+    "console_cant_use": "Cette commande ne peut pas être utilisée par la console",
+    "map_cleaned": "\nLa carte a été nettoyée",
+    "map_clean_failed": "Seul l'hôte du serveur peut le faire",
+    "server_host_only": "Seul l'hôte du serveur peut le faire",
+    "teleported_to_you": "{0} téléporté vers toi",
+    "undone": "{0} accessoire{1} défait",
+    
+    "tab_props": "Accessoires",
+    "tab_entities": "Entités",
+    "tab_sandworks": "S&Works",
+    "tab_tools": "Outils",
+    "tab_utils": "Utilitaires",
+
+    "control_filter": "Filtre",
+    "order_newest": "Le plus récent",
+    "order_popular": "Populaire",
+    "order_trending": "Tendance",
+    "order_updated": "Mise à jour",
+    "refresh": "Rafraîchir",
+
+    "entityaction_copyclass": "Copier la classe",
+    "entityaction_spawner": "Apparaissez avec Toolgun",
+    
+    "playeraction_copyname": "Copier le nom",
+    "playeraction_copysteamid": "Copie SteamID64",
+    "playeraction_goto": "aller à",
+    "playeraction_undoall": "Défaire tout",
+    "playeraction_kick": "Donner un coup",
+    
+    "propaction_copypath": "Copier le chemin",
+    "propaction_spawner": "Apparaissez avec Toolgun",
+
+    "utilaction_undo": "Annuler",
+    "utilaction_undoall": "Défaire tout",
+    "utilaction_undoeveryone": "Annuler tout le monde",
+    "utilaction_cleanupmap": "Carte de nettoyage",
+
+    "score_title": "Sandbox",
+    "score_kills": "Tue",
+    "score_deaths": "Des morts",
+    "score_entities": "Entités",
+
+    "scorecategory_host": "Hôte",
+    "scorecategory_player": "Joueur",
+    "scorecategory_bot": "Robot",
+    "scorecategory_recentlyleft": "Parti récemment"
+}

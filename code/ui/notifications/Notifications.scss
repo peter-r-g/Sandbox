@@ -1,0 +1,54 @@
+﻿notifications {
+    position: absolute;
+    min-height: 45%;
+    min-width: 20%;
+    z-index: -1;
+
+    flex-direction: column;
+    right: 5px;
+    bottom: 8%;
+
+    & notification {
+        border-right: 5px solid #03a9f3;
+        margin-bottom: 5px;
+        padding-right: 5px;
+        min-width: 100px;
+        height: 45px;
+
+        display: flex;
+        justify-content: flex-end;
+
+        transition: transform 0.5s ease-out;
+        transform: translateX(0%);
+
+        &:intro {
+            transform: translateX(150%);
+        }
+
+        &:outro {
+            transform: translateX(150%);
+        }
+
+        &.jiggle .inner {
+            transform: translateX(-15%);
+        }
+
+        & .inner {
+            backdrop-filter: blur(8px) saturate(0.2) brightness(0.3);
+            background-color: rgba(0, 0, 0, .8);
+            align-items: center;
+            //width: 100%;
+
+            transition: transform 0.5s ease-out;
+            transform: translateX(0%);
+
+            & .label {
+                font-family: Poppins;
+                margin: 0px 8px;
+                font-size: 24px;
+                color: white;
+
+            }
+        }
+    }
+}

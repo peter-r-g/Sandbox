@@ -1,0 +1,95 @@
+﻿playerlist {
+    backdrop-filter: blur(8px) saturate(0.2) brightness(0.3);
+    background-color: rgba(0, 0, 0, .8);
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1000;
+    height: 100%;
+    width: 100%;
+
+    &:not(.open) {
+        display: none;
+    }
+
+    &.open {
+        pointer-events: all;
+    }
+
+    & .listbody {
+        flex-direction: column;
+        min-height: 50%;
+        width: 45%;
+
+        & .header {
+            border-bottom: 5px solid #03a9f3;
+            height: 30px;
+            width: 100%;
+
+            & .title {
+                font-family: Poppins;
+                font-size: 20px;
+                padding: 0 5px;
+                color: white;
+                width: 100%;
+            }
+
+            & .proptitle {
+                font-family: Poppins;
+                font-weight: 300;
+                font-size: 16px;
+                padding: 0 5px;
+                color: #ccc;
+                width: 15%;
+            }
+        }
+
+        & .category {
+            border-left: 2px solid #03a9f3;
+            flex-direction: column;
+            padding-left: 5px;
+            margin-top: 10px;
+            width: 100%;
+
+            & .catheader {
+                transform: translate(-5px 0);
+                padding-bottom: 5px;
+                width: 100%;
+
+                & .cattitle {
+                    background-color: #03a9f3;
+                    padding: 0 5px 0 2px;
+                    font-family: Poppins;
+                    font-size: 16px;
+                    color: white;
+                }
+            }
+
+            & playerentry {
+                margin-bottom: 5px;
+                cursor: pointer;
+
+                &:not(:last-child) {
+                    border-bottom: 1px solid rgba(white, .02);
+                }
+
+                &:hover {
+                    background-color: rgba(grey, .05);
+                }
+
+                & .label {
+                    font-family: Poppins;
+                    font-size: 17px;
+                    color: white;
+                    width: 100%;
+
+                    &:not(.primary) {
+                        width: 15%;
+                        color: #aaa;
+
+                    }
+                }
+            }
+        }
+    }
+}

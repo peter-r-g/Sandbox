@@ -1,0 +1,10 @@
+﻿<link href="DresserMenu.scss" rel="stylesheet">
+
+<div>
+    <div @ref="RenderContainer" class="renderContainer"></div>
+    <SliderLabeled @ref="SkinSlider" max="5" min="1" onFinalValue="UpdateSettings()" step="1"
+                   title="Skin Color"></SliderLabeled>
+
+    <Title>Outfit</Title>
+    <ModelSelector @ref="ClothingSelection" onFinalValue="UpdateSettings()" singular="false"></ModelSelector>
+</div>
