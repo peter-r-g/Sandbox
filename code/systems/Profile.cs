@@ -46,7 +46,7 @@ public static class Profile
 		_root = new Entry();
 	}
 
-	[ServerCmd( Constants.Command.DebugTimerStats )]
+	[AdminCmd( Constants.Command.DebugTimerStats )]
 	public static void DisplayTimerProperties()
 	{
 		// Display the timer frequency and resolution.
@@ -65,7 +65,7 @@ public static class Profile
 			: Language.TryGetPhrase( "profiling_inactive" ) );
 	}
 	
-	[ServerCmd( Constants.Command.DebugSetActiveSv )]
+	[AdminCmd( Constants.Command.DebugSetActiveSv )]
 	public static void SetActiveSv( bool active )
 	{
 		_profileActive = active;
@@ -88,7 +88,7 @@ public static class Profile
 		Log.Info( Language.TryGetPhrase( "profiling_saved", $"cl_{Constants.ProfileDataFileName}" ) );
 	}
 
-	[ServerCmd( Constants.Command.DebugSaveProfileSv )]
+	[AdminCmd( Constants.Command.DebugSaveProfileSv )]
 	public static void SaveProfileSv()
 	{
 		if ( ProfiledData.Profiles.Count == 0 )
@@ -109,7 +109,7 @@ public static class Profile
 		Log.Info( Language.TryGetPhrase( "profiling_cleared" ) );
 	}
 	
-	[ServerCmd( Constants.Command.DebugDumpProfileSv )]
+	[AdminCmd( Constants.Command.DebugDumpProfileSv )]
 	public static void DumpProfileSv()
 	{
 		ProfiledData.Profiles.Clear();
