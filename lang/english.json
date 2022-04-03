@@ -49,6 +49,15 @@
     "scorecategory_bot": "Bot",
     "scorecategory_recentlyleft": "Recently Left",
     
+    "profiling_highres": "Operations timed using the system's high-resolution performance counter",
+    "profiling_lowres": "Operations timed using the DateTime class",
+    "profiling_accuracy": "Timer is accurate within {0} nanoseconds",
+    "profiling_active": "Profiling is now active",
+    "profiling_inactive": "Profiling is now inactive",
+    "profiling_nodata": "There is no profiling data to save",
+    "profiling_saved": "Saved data to {0}",
+    "profiling_cleared": "Profiling data cleared",
+    
     "entity_balloon": "Balloon",
     "entity_bouncyball": "Bouncy Ball",
     "entity_car": "Car",

@@ -51,23 +51,27 @@ public static class Profile
 	{
 		// Display the timer frequency and resolution.
 		Log.Info( Stopwatch.IsHighResolution
-			? "Operations timed using the system's high-resolution performance counter."
-			: "Operations timed using the DateTime class." );
-		Log.Info( $"Timer is accurate within {(1000L * 1000L * 1000L) / Stopwatch.Frequency} nanoseconds" );
+			? Language.TryGetPhrase( "profiling_highres" )
+			: Language.TryGetPhrase( "profiling_lowres" ) );
+		Log.Info( Language.TryGetPhrase( "profiling_accuracy", (1000L * 1000L * 1000L) / Stopwatch.Frequency ) );
 	}
 
 	[ClientCmd( Constants.Command.DebugSetActiveCl )]
 	public static void SetActiveCl( bool active )
 	{
 		_profileActive = active;
-		Log.Info( active ? "Profiling is now active" : "Profiling is now inactive" );
+		Log.Info( active
+			? Language.TryGetPhrase( "profiling_active" )
+			: Language.TryGetPhrase( "profiling_inactive" ) );
 	}
 	
 	[ServerCmd( Constants.Command.DebugSetActiveSv )]
 	public static void SetActiveSv( bool active )
 	{
 		_profileActive = active;
-		Log.Info( active ? "Profiling is now active" : "Profiling is now inactive" );
+		Log.Info( active
+			? Language.TryGetPhrase( "profiling_active" )
+			: Language.TryGetPhrase( "profiling_inactive" ) );
 	}
 	
 	[ClientCmd( Constants.Command.DebugSaveProfileCl )]
@@ -75,13 +79,13 @@ public static class Profile
 	{
 		if ( ProfiledData.Profiles.Count == 0 )
 		{
-			Log.Warning( "There is no data!" );
+			Log.Warning( Language.TryGetPhrase( "profiling_nodata" ) );
 			return;
 		}
 		
 		FileSystem.Data.WriteJson( $"cl_{Constants.ProfileDataFileName}", ProfiledData );
 		ProfiledData.Profiles.Clear();
-		Log.Info( "Saved data to cl_profile_data.json" );
+		Log.Info( Language.TryGetPhrase( "profiling_saved", $"cl_{Constants.ProfileDataFileName}" ) );
 	}
 
 	[ServerCmd( Constants.Command.DebugSaveProfileSv )]
@@ -89,27 +93,27 @@ public static class Profile
 	{
 		if ( ProfiledData.Profiles.Count == 0 )
 		{
-			Log.Warning( "There is no data!" );
+			Log.Warning( Language.TryGetPhrase( "profiling_nodata" ) );
 			return;
 		}
 		
 		FileSystem.Data.WriteJson( $"sv_{Constants.ProfileDataFileName}", ProfiledData );
 		ProfiledData.Profiles.Clear();
-		Log.Info( "Saved data to sv_profile_data.json" );
+		Log.Info( Language.TryGetPhrase( "profiling_saved", $"sv_{Constants.ProfileDataFileName}" ) );
 	}
 
 	[ClientCmd( Constants.Command.DebugDumpProfileCl )]
 	public static void DumpProfileCl()
 	{
 		ProfiledData.Profiles.Clear();
-		Log.Info( "Profile data cleared" );
+		Log.Info( Language.TryGetPhrase( "profiling_cleared" ) );
 	}
 	
 	[ServerCmd( Constants.Command.DebugDumpProfileSv )]
 	public static void DumpProfileSv()
 	{
 		ProfiledData.Profiles.Clear();
-		Log.Info( "Profile data cleared" );
+		Log.Info( Language.TryGetPhrase( "profiling_cleared" ) );
 	}
 	
 	private readonly struct ProfileScope : IDisposable
