@@ -22,7 +22,7 @@ public class SpawnerTool : BaseTool
 				return;
 			}
 
-			var tr = Trace.Ray( Owner.EyePosition, Owner.EyePosition + Owner.EyeRotation.Forward * 20000 )
+			var tr = Trace.Ray( Owner.EyePosition, Owner.EyePosition + Owner.EyeRotation.Forward * MaxTraceDistance )
 				.Ignore( Owner )
 				.Run();
 
